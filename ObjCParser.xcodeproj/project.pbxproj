@@ -22,6 +22,8 @@
 		48A68E9518F9E711006273E8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A68E7418F9E711006273E8 /* UIKit.framework */; };
 		48A68E9D18F9E711006273E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 48A68E9B18F9E711006273E8 /* InfoPlist.strings */; };
 		48A68E9F18F9E711006273E8 /* ObjCParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A68E9E18F9E711006273E8 /* ObjCParserTests.m */; };
+		48A68EAB18F9E72F006273E8 /* DALObjCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 48A68EAA18F9E72F006273E8 /* DALObjCParser.m */; };
+		48B3198818FA89A80015E651 /* DALInvocationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 48B3198718FA89A80015E651 /* DALInvocationResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,10 @@
 		48A68E9A18F9E711006273E8 /* ObjCParserTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ObjCParserTests-Info.plist"; sourceTree = "<group>"; };
 		48A68E9C18F9E711006273E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		48A68E9E18F9E711006273E8 /* ObjCParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCParserTests.m; sourceTree = "<group>"; };
+		48A68EA918F9E72F006273E8 /* DALObjCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALObjCParser.h; sourceTree = "<group>"; };
+		48A68EAA18F9E72F006273E8 /* DALObjCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALObjCParser.m; sourceTree = "<group>"; };
+		48B3198618FA89A80015E651 /* DALInvocationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALInvocationResult.h; sourceTree = "<group>"; };
+		48B3198718FA89A80015E651 /* DALInvocationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALInvocationResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 		48A68E7618F9E711006273E8 /* ObjCParser */ = {
 			isa = PBXGroup;
 			children = (
+				48A68EA818F9E724006273E8 /* ObjCParser */,
 				48A68E7F18F9E711006273E8 /* DALAppDelegate.h */,
 				48A68E8018F9E711006273E8 /* DALAppDelegate.m */,
 				48A68E8218F9E711006273E8 /* Main_iPhone.storyboard */,
@@ -153,6 +160,17 @@
 				48A68E9B18F9E711006273E8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		48A68EA818F9E724006273E8 /* ObjCParser */ = {
+			isa = PBXGroup;
+			children = (
+				48B3198618FA89A80015E651 /* DALInvocationResult.h */,
+				48B3198718FA89A80015E651 /* DALInvocationResult.m */,
+				48A68EA918F9E72F006273E8 /* DALObjCParser.h */,
+				48A68EAA18F9E72F006273E8 /* DALObjCParser.m */,
+			);
+			path = ObjCParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +274,9 @@
 			files = (
 				48A68E8118F9E711006273E8 /* DALAppDelegate.m in Sources */,
 				48A68E7D18F9E711006273E8 /* main.m in Sources */,
+				48A68EAB18F9E72F006273E8 /* DALObjCParser.m in Sources */,
 				48A68E8A18F9E711006273E8 /* DALViewController.m in Sources */,
+				48B3198818FA89A80015E651 /* DALInvocationResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +491,7 @@
 				48A68EA418F9E711006273E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		48A68EA518F9E711006273E8 /* Build configuration list for PBXNativeTarget "ObjCParserTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +500,7 @@
 				48A68EA718F9E711006273E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

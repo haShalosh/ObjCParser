@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "DALObjCParser.h"
 
 @interface ObjCParserTests : XCTestCase
 
@@ -26,9 +27,148 @@
     [super tearDown];
 }
 
-- (void)testExample
+#pragma mark - Invalid statements
+
+- (void)testUnbalancedBrackets
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+	NSError *error = nil;
+	NSInvocation *invocation = [DALObjCParser invocationForStatement:@"[[NSArray new]" error:&error];
+	XCTAssertNil(invocation, @"Invocation should be nil. %@", invocation);
+	XCTAssert(error, @"Error shouldn't be nil.");
 }
+
+#pragma mark - Syntax
+
+- (void)testSingleBrackets
+{
+	NSError *error = nil;
+	NSInvocation *invocation = [DALObjCParser invocationForStatement:@"[NSArray version]" error:&error];
+	id target = [invocation target];
+	XCTAssertTrue(target, @"Error code: %@; description: %@", @([error code]), [error localizedDescription]);
+}
+
+#pragma mark - Objects
+
+- (void)testObjectClass
+{
+	NSError *error = nil;
+	NSInvocation *invocation = [DALObjCParser invocationForStatement:@"[NSArray new]" error:&error];
+	id target = [invocation target];
+	XCTAssertTrue(target, @"Error code: %@; description: %@", @([error code]), [error localizedDescription]);
+}
+
+- (void)testObjectNestedReturnObject
+{
+	NSError *error = nil;
+	NSInvocation *invocation = [DALObjCParser invocationForStatement:@"[[NSArray alloc] init]" error:&error];
+	id target = [invocation target];
+	XCTAssertTrue(target, @"Error code: %@; description: %@", @([error code]), [error localizedDescription]);
+}
+
+- (void)testObjectMemoryAddress
+{
+	NSObject *anObject = @YES;
+	NSString *statement = [NSString stringWithFormat:@"[%p description]", anObject];
+	
+	NSError *error = nil;
+	NSInvocation *invocation = [DALObjCParser invocationForStatement:statement error:&error];
+	XCTAssert(invocation, @"Invocation shouldn't be nil.");
+	XCTAssertNil(error, @"Error should be nil. %@", error);
+	
+	[invocation invoke];
+	
+	NSString *invocationDescription = nil;
+	[invocation getReturnValue:&invocationDescription];
+	
+	NSString *anObjectDescription = [anObject description];
+	
+	XCTAssert([invocationDescription isEqualToString:anObjectDescription], @"Should be equal:\n%@\n%@", invocationDescription, anObjectDescription);
+}
+
+#pragma mark - Parameters
+
+- (void)testParameterNSStringLiteral
+{
+#warning Implement this.
+}
+
+//#warning A UTF8 String literal as a parameter is not yet supported.
+//- (void)testParameterUTF8StringLiteral
+//{
+//#warning Implement this.
+//}
+
+//#warning An array literal as a parameter is not yet supported.
+//- (void)testParameterArrayLiteral
+//{
+//#warning Implement this.
+//}
+
+//#warning A dictionary literal as a parameter is not yet supported.
+//- (void)testParameterDictinaryLiteral
+//{
+//#warning Implement this.
+//}
+
+- (void)testParameterMemoryAddress
+{
+#warning Implement this.
+}
+
+- (void)testParameterPrimitiveNo
+{
+#warning Implement this.
+}
+
+- (void)testParameterPrimitiveYes
+{
+#warning Implement this.
+}
+
+- (void)testParameterPrimitiveNil
+{
+#warning Implement this.
+}
+
+- (void)testParameterPrimitiveInt
+{
+#warning Implement this.
+}
+
+- (void)testParameterPrimitiveFloat
+{
+#warning Implement this.
+}
+
+- (void)testParameterPrimitivePositiveDouble
+{
+#warning Implement this.
+}
+
+- (void)testParameterPrimitiveNegativeDouble
+{
+#warning Implement this.
+}
+
+- (void)testParameterStructCGPoint
+{
+#warning Implement this.
+}
+
+- (void)testParameterStructCGRect
+{
+#warning Implement this.
+}
+
+- (void)testParameterNestedStatement
+{
+#warning Implement this.
+}
+
+//#warning A class as a parameter is not yet supported.
+//- (void)testParameterClass
+//{
+//#warning Implement this.
+//}
 
 @end

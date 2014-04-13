@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DALViewController : UIViewController
+@interface DALViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *statementTextField;
+@property (weak, nonatomic) IBOutlet UILabel *textFieldsMemoryAddressLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *viewsMemoryAddressLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *contentSubview;
+@property (weak, nonatomic) IBOutlet UILabel *contentSubviewMemoryAddressLabel;
+
 
 @end
